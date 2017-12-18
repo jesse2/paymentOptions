@@ -1,0 +1,28 @@
+<h2>PayPal Response</h2>
+ID: {{result.id}}<br>
+Intent: {{result.intent}}<br>
+State: {{result.state}}<br>
+Cart: {{result.cart}}
+
+<h2>Payer Information</h2>
+Payment Method: {{result.payer.payment_method}}<br>
+Status: {{result.payer.status}}<br>
+Email: {{result.payer.payer_info.email}}<br>
+First Name: {{result.payer.payer_info.first_name}}<br>
+Last Name: {{result.payer.payer_info.last_name}}<br>
+Payer ID: {{result.payer.payer_info.payer_id}}<br>
+
+<h2>Shipping Information</h2>
+Recipient Name: {{result.payer.payer_info.shipping_address.recipient_name}}<br>
+line 1: {{result.payer.payer_info.shipping_address.line1}}<br>
+City: {{result.payer.payer_info.shipping_address.city}}<br>
+State: {{result.payer.payer_info.shipping_address.state}}<br>
+Postal Code: {{result.payer.payer_info.shipping_address.postal_code}}<br>
+Country Code: {{result.payer.payer_info.shipping_address.country_code}}<br>
+
+<h2>Transaction</h2>
+Amount: {{result.transactions[0].amount.total}}<br>
+Currency: {{result.transactions[0].amount.currency}}<br>
+
+<h2>Raw Data</h2>
+{{ras}}

@@ -1,0 +1,19 @@
+<h2>Transaction Results</h2>
+ID: {{result.id}}<br>
+Status: {{result.status}}<br>
+Type: {{result.type}}<br>
+Amount: {{result.amount}}<br>
+Created At: {{result.createdAt}}<br>
+Updated At: {{result.updatedAt}}<br><br>
+
+<h3>Payment</h3>
+Token: {{result.creditCard["token"]}}<br>
+Bin: {{result.creditCard["bin"]}}<br>
+Last 4: {{result.creditCard["last4"]}}<br>
+Card Type: {{result.creditCard["cardType"]}}<br>
+Expiration Date: {{result.creditCard["expirationDate"]}}<br>
+CardHolder Name: {{result.creditCard["cardholderName"]}}<br>
+Customer Location: {{result.creditCard["customerLocation"]}}<br><br>
+
+<h3>Raw API Details</h3>
+{{ras}}

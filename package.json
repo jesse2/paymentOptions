@@ -1,0 +1,19 @@
+{
+  "name": "payments",
+  "version": "1.0.0",
+  "description": "mean stack app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "braintree": "^2.4.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "paypal-rest-sdk": "^1.8.1",
+    "request": "^2.83.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

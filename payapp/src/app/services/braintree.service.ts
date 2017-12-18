@@ -11,7 +11,7 @@ export class BraintreeService {
   constructor(private http:Http) { }
 
   getToken(){
-    return this.http.get("/braintree/client_token")
+    return this.http.get("https://jesusacastaneda.com/braintree/client_token")
     .map(res => this.result= res.text());
   }
 

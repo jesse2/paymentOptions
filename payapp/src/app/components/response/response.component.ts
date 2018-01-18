@@ -16,7 +16,10 @@ export class ResponseComponent implements OnInit {
   private router:Router) { }
 
   ngOnInit() {
-    this.btService.getTransaction(this.btService.tokenId).subscribe(res=>{
+    var options={
+      transid:this.btService.tokenId
+    }
+    this.btService.getTransaction(options).subscribe(res=>{
       this.result=res;
       this.ras=JSON.stringify(res);
     },

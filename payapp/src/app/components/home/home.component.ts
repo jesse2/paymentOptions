@@ -15,6 +15,14 @@ export class HomeComponent implements OnInit {
   braintreeIsReady: boolean;
   dropIninstance: any;
   private options;
+  firstname:String;
+  lastname:String;
+  email:String;
+  address:String;
+  zip:String;
+  amount:String;
+city:String;
+
   constructor(private btService:BraintreeService,
   private router:Router) { }
 
@@ -70,7 +78,19 @@ export class HomeComponent implements OnInit {
 
   submitPayment(){
     this.dropIninstance.requestPaymentMethod((err,payload)=>{
-      this.btService.sendInfo(payload.nonce).subscribe(res=>{
+      console.log(payload.nonce);
+      var options={
+        nonce:payload.nonce,
+        firstname:this.firstname,
+        lastname:this.lastname,
+        amount:this.amount,
+        email:this.email,
+        address:this.address,
+        city:this.city,
+        zip:this.zip
+      };
+
+      this.btService.sendInfo(options).subscribe(res=>{
         this.btService.tokenId=res;
         this.result=res;
         this.router.navigate(['/response'])

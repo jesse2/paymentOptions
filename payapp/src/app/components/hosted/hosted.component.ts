@@ -9,6 +9,13 @@ import * as braintree from 'braintree-web';
   styleUrls: ['./hosted.component.css']
 })
 export class HostedComponent implements OnInit {
+  firstname:String;
+  lastname:String;
+  email:String;
+  address:String;
+  zip:String;
+  amount:String;
+city:String;
 
   constructor(private btService:BraintreeService,
     private router:Router) { }
@@ -67,8 +74,17 @@ export class HostedComponent implements OnInit {
                 console.log(tokenizeErr);
                 return;
               }
-
-              this.btService.sendInfo(payload.nonce).subscribe(res=>{
+              var options={
+                nonce:payload.nonce,
+                firstname:this.firstname,
+                lastname:this.lastname,
+                amount:this.amount,
+                email:this.email,
+                address:this.address,
+                city:this.city,
+                zip:this.zip
+              };
+              this.btService.sendInfo(options).subscribe(res=>{
                 this.btService.tokenId=res;
                 this.router.navigate(['/response']);
               },

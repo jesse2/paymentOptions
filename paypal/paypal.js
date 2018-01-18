@@ -39,16 +39,6 @@ router.get('/create-payment2/:token', async function(req,res){
 });
 
 router.post('/execute-payment/:info/:info2/:info3', async function(req,res){
-    //console.log('inside execute payment api call');
-    // console.log(req.params.info);
-    // console.log(req.params.info2);
-    // console.log(req.params.info3);
-    //console.log(req.params.info);
-    //console.log(req.params.info.newtoken.text());
-   // var ff=JSON.stringify(req.params.info);
-   // console.log(ff.newtoken);
-
-    //console.log(req.params.info);
 let ato=req.params.info;
 let paymentID=req.params.info2;
 let payerID=req.params.info3;
@@ -62,12 +52,9 @@ var body={
 
 var uri=`https://api.sandbox.paypal.com/v1/payments/payment/${paymentID}/execute`;
 await request.post({uri:uri, auth:auth, json:true,body:body},(e,r,body)=>{
-    //console.log(body);
-//res.json({status:'success'});
 //res.json(body);
 res.send(body);
 });
-
 });
 
 module.exports=router;

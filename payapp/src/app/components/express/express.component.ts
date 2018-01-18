@@ -15,6 +15,7 @@ declare let paypal:any;
   styleUrls: ['./express.component.css']
 })
 export class ExpressComponent implements OnInit {
+
   constructor(private http:Http,
   private router:Router,
   private btService:BraintreeService) { }
@@ -34,10 +35,13 @@ export class ExpressComponent implements OnInit {
         },
   
         payment: (data, actions)=> {
-          return actions.request.post('/paypal/create-payment1')
+          return actions.request.post('https://jesusacastaneda.com/paypal/create-payment1')
           .then(function(res) { 
             //console.log("Access Token: "+res); 
-            return actions.request.get('/paypal/create-payment2/'+res)
+            var options={
+              token:res
+            };
+            return actions.request.post('https://jesusacastaneda.com/paypal/create-payment2',options)
             .then(function(res){
               return res;
             });       
@@ -53,19 +57,15 @@ export class ExpressComponent implements OnInit {
           var paymentID=data.paymentID;
           var payerID=data.payerID;
 
-          this.http.post('/paypal/create-payment1',data).subscribe(res=>{
-            //console.log(res.text());
+          this.http.post('https://jesusacastaneda.com/paypal/create-payment1',data).subscribe(res=>{
             var token=res.text();
-            // console.log("token 1: "+token);
 
-            // console.log("Payment ID: "+data.paymentID);
-            // console.log("Payer ID: "+data.payerID);
-            var dat={
-              newtoken:token,
-              'paymentID':data.paymentID,
-              'payerID': data.payerID
+            var options={
+              info:token,
+              info2:data.paymentID,
+              info3:data.payerID
             }
-            this.http.post('/paypal/execute-payment/'+ token+'/'+data.paymentID+'/'+data.payerID, dat).subscribe(resp=>{
+            this.http.post('https://jesusacastaneda.com/paypal/execute-payment/', options).subscribe(resp=>{
 
               //console.log(resp.text());
               this.btService.ppres=resp.json();

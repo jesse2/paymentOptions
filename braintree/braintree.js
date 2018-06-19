@@ -4,9 +4,9 @@ var braintree=require('braintree');
 
 var gateway=braintree.connect({
     environment : braintree.Environment.Sandbox,
-    merchantId: "3znffydh7wvgphyw",
-    publicKey: "k49wftrkkvqsy72t",
-    privateKey: "73bbdeebd7d8cededa229f978ff538e4"
+    merchantId: "",
+    publicKey: "",
+    privateKey: ""
 });
 
 //initial token request
